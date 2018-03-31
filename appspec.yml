@@ -33,10 +33,16 @@ hooks:
     - location: cdeploy-scripts/RiskEngine-Clean.sh
       timeout: 30
       runas: riskengine
+    - location: cdeploy-scripts/RiskEngine-BundlerAddPerm.sh
+      timeout: 30
+      runas: root
   AfterInstall:
     - location: cdeploy-scripts/RiskEngine-Prep.sh
       timeout: 600
       runas: riskengine
+    - location: cdeploy-scripts/RiskEngine-BundlerRemPerm.sh
+      timeout: 600
+      runas: root
   ApplicationStart:
     - location: cdeploy-scripts/RiskEngine-Start.sh
       timeout: 60
