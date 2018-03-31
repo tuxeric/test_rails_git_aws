@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd /home/riskengine/webapp
-rails server -d
+/usr/local/bin/rails server -d
