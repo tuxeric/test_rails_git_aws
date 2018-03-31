@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/bin/killall ruby2.3
+/usr/bin/killall ruby2.3 || /bin/true
