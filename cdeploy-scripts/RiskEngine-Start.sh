@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /home/riskengine/test_rails_git_aws
+cd /home/riskengine/webapp
 ~/bin/rails server -d
