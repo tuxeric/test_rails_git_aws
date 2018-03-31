@@ -1,0 +1,47 @@
+version: 0.0
+os: linux 
+
+files:
+  - source: /
+    destination: /home/riskengine/webapp
+
+permissions:
+  - object: /home/riskengine/webapp
+    pattern: "**"
+    owner: riskengine
+    group: riskengine
+    mode: 755
+    type:
+      - directory
+  - object: /home/riskengine/webapp
+    pattern: "**"
+    owner: riskengine
+    group: riskengine
+    mode: 644
+    type:
+      - file
+
+hooks:
+  ApplicationStop:
+    - location: cdeploy-scripts/RiskEngine-Stop.sh
+      timeout: 60
+      runas: riskengine
+  BeforeInstall:
+    - location: cdeploy-scripts/RiskEngine-Backup.sh
+      timeout: 180
+      runas: riskengine
+    - location: cdeploy-scripts/RiskEngine-Clean.sh
+      timeout: 30
+      runas: riskengine
+  AfterInstall:
+    - location: cdeploy-scripts/RiskEngine-Prep.sh
+      timeout: 600
+      runas: riskengine
+  ApplicationStart:
+    - location: cdeploy-scripts/RiskEngine-Start.sh
+      timeout: 60
+      runas: riskengine
+  ValidateService:
+    - location: cdeploy-scripts/RiskEngine-Validate.sh
+      timeout: 60
+      runas: riskengine
