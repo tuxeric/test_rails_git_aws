@@ -6,6 +6,13 @@ files:
     destination: /home/riskengine/webapp
 
 permissions:
+  - object: /home/riskengine/
+    pattern: "webapp"
+    owner: riskengine
+    group: riskengine
+    mode: 755
+    type:
+      - directory
   - object: /home/riskengine/webapp
     pattern: "**"
     owner: riskengine
